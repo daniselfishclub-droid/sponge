@@ -1,7 +1,19 @@
+import Hero from "@/components/landing/Hero";
+import About from "@/components/landing/About";
+import Curriculum from "@/components/landing/Curriculum";
+import Target from "@/components/landing/Target";
+import ComingSoon from "@/components/landing/ComingSoon";
+import PreRegisterSection from "@/components/pre-register/PreRegisterSection";
+
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-sponge-gold">🧽 Sponge Club</h1>
-    </div>
+    <>
+      <Hero />
+      <About />
+      <Curriculum />
+      <Target />
+      <PreRegisterSection />
+      <ComingSoon />
+    </>
   );
 }
