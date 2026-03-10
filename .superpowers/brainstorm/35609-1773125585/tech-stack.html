@@ -1,0 +1,61 @@
+<h2>기술 스택 & 구현 방향</h2>
+<p class="subtitle">초안(MVP)을 빠르게 만들기 위한 추천 구성</p>
+
+<div class="options">
+  <div class="option" data-choice="a" onclick="toggleSelect(this)">
+    <div class="letter">추천</div>
+    <div class="content">
+      <h3>Next.js + Tailwind CSS + Supabase</h3>
+      <p><strong>빠른 개발 + 확장성 모두 확보</strong></p>
+      <ul style="color:#aaa; font-size:13px; margin-top:8px; padding-left:16px;">
+        <li><strong>Next.js (App Router)</strong> — SSG로 빠른 로딩, SEO 최적화</li>
+        <li><strong>Tailwind CSS</strong> — 다크 테마 구현 용이, 빠른 스타일링</li>
+        <li><strong>Supabase</strong> — 이미 사용 중인 DB. 신청 폼, 후기 관리에 활용</li>
+        <li><strong>Vercel 배포</strong> — Next.js 최적 호스팅, 무료 티어로 시작</li>
+      </ul>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>장점</h4><ul><li>Claude Code로 빠르게 개발 가능</li><li>커뮤니티 성장 시 기능 확장 용이</li><li>Supabase 연동으로 데이터 일원화</li></ul></div>
+        <div class="cons"><h4>고려사항</h4><ul><li>React 기반이라 초기 세팅 필요</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="b" onclick="toggleSelect(this)">
+    <div class="letter">B</div>
+    <div class="content">
+      <h3>정적 사이트 (HTML + CSS + JS)</h3>
+      <p>가장 단순한 접근. 순수 정적 페이지로 배포</p>
+      <ul style="color:#aaa; font-size:13px; margin-top:8px; padding-left:16px;">
+        <li>HTML/CSS/JS 직접 작성</li>
+        <li>Netlify 또는 GitHub Pages 배포</li>
+        <li>신청 폼은 Google Forms 또는 Tally 임베드</li>
+      </ul>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>장점</h4><ul><li>빌드 과정 없이 바로 배포</li><li>가장 빠른 초기 구현</li></ul></div>
+        <div class="cons"><h4>단점</h4><ul><li>페이지 추가/수정 시 중복 코드</li><li>동적 기능 확장 어려움</li></ul></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="option" data-choice="c" onclick="toggleSelect(this)">
+    <div class="letter">C</div>
+    <div class="content">
+      <h3>노코드 (Framer / Webflow)</h3>
+      <p>코드 없이 드래그 앤 드롭으로 제작</p>
+      <ul style="color:#aaa; font-size:13px; margin-top:8px; padding-left:16px;">
+        <li>Framer 또는 Webflow로 비주얼 빌딩</li>
+        <li>CMS 기능으로 후기/데모데이 관리</li>
+        <li>폼 기능 내장</li>
+      </ul>
+      <div class="pros-cons" style="margin-top:12px;">
+        <div class="pros"><h4>장점</h4><ul><li>디자인 자유도 높음</li><li>비개발자도 수정 가능</li></ul></div>
+        <div class="cons"><h4>단점</h4><ul><li>월 비용 발생 ($15-40/월)</li><li>Supabase 연동 복잡</li><li>커스텀 기능 제한</li></ul></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="margin-top:24px;">
+  <h3>추천 이유: Next.js + Tailwind + Supabase</h3>
+  <p style="color:#aaa; font-size:13px;">기획서에 Supabase를 이미 활용 중이고, Claude Code로 개발 가능하므로 Next.js가 최적입니다. 초기에는 정적 페이지처럼 심플하게 만들되, 이후 신청 폼·후기 관리·포인트 시스템 등 동적 기능을 자연스럽게 확장할 수 있습니다.</p>
+</div>
