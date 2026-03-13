@@ -34,19 +34,19 @@ export default function SurveyStep({
     <div className="space-y-6">
       {/* Progress */}
       <div className="flex items-center gap-2 mb-2">
-        <div className="flex-1 h-1 bg-sponge-card rounded-full overflow-hidden">
+        <div className="flex-1 h-1 bg-sponge-bg rounded-full overflow-hidden">
           <div
-            className="h-full bg-sponge-gold rounded-full transition-all duration-300"
+            className="h-full bg-gradient-to-r from-sponge-gold to-sponge-cyan rounded-full transition-all duration-500"
             style={{ width: `${((stepNumber + 1) / (totalSteps + 1)) * 100}%` }}
           />
         </div>
-        <span className="text-sponge-muted text-xs">
-          {stepNumber + 1} / {totalSteps + 1}
+        <span className="text-sponge-muted text-xs font-mono">
+          {stepNumber + 1}/{totalSteps + 1}
         </span>
       </div>
 
       {/* Question */}
-      <h3 className="text-xl font-bold text-white">{question.question}</h3>
+      <h3 className="text-xl font-display font-bold text-white">{question.question}</h3>
       {question.type === "multiple" && (
         <p className="text-sponge-muted text-sm">복수 선택 가능</p>
       )}
@@ -66,10 +66,10 @@ export default function SurveyStep({
                   ? handleMultiSelect(option)
                   : handleSingleSelect(option)
               }
-              className={`text-left p-4 rounded-xl border transition-all ${
+              className={`text-left p-4 rounded-xl border transition-all duration-200 ${
                 isSelected
-                  ? "border-sponge-gold bg-sponge-gold/10 text-white"
-                  : "border-white/10 bg-sponge-card hover:border-white/20 text-sponge-text"
+                  ? "border-sponge-gold/60 bg-sponge-gold/10 text-white box-glow-gold"
+                  : "border-white/8 bg-sponge-bg/50 hover:border-white/20 hover:bg-sponge-card/50 text-sponge-text"
               }`}
             >
               <div className="flex items-center justify-between">

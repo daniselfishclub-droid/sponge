@@ -73,19 +73,29 @@ export default function PreRegisterSection() {
   };
 
   return (
-    <section id="pre-register" className="py-20 px-4">
+    <section id="pre-register" className="relative py-24 px-4 mesh-gradient-section">
       <div className="max-w-lg mx-auto">
-        <div className="text-center mb-8">
-          <p className="text-sponge-gold text-sm font-bold mb-2">사전 알림 신청</p>
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-10"
+        >
+          <p className="text-sponge-gold font-mono text-sm tracking-wider mb-3">PRE-REGISTER</p>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-3">
             1기 오픈 알림을 받아보세요
           </h2>
           <p className="text-sponge-muted text-sm">
             간단한 설문에 참여하고, 오픈 소식을 가장 먼저 받아보세요.
           </p>
-        </div>
+        </motion.div>
 
-        <div className="bg-sponge-card rounded-2xl p-6 md:p-8 border border-white/5">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="glass-card rounded-2xl p-6 md:p-8"
+        >
           {isComplete ? (
             <SuccessMessage />
           ) : (
@@ -117,7 +127,7 @@ export default function PreRegisterSection() {
               </AnimatePresence>
 
               {error && (
-                <p className="text-red-400 text-sm mt-4 text-center">{error}</p>
+                <p className="text-sponge-coral text-sm mt-4 text-center">{error}</p>
               )}
 
               {/* Navigation */}
@@ -133,7 +143,7 @@ export default function PreRegisterSection() {
                   <button
                     onClick={handleNext}
                     disabled={!canProceed()}
-                    className="flex items-center gap-1 bg-sponge-gold/20 text-sponge-gold px-4 py-2 rounded-lg text-sm font-bold hover:bg-sponge-gold/30 transition disabled:opacity-30"
+                    className="flex items-center gap-1 bg-sponge-gold/20 text-sponge-gold px-5 py-2 rounded-lg text-sm font-bold hover:bg-sponge-gold/30 transition disabled:opacity-30"
                   >
                     다음 <ChevronRight size={16} />
                   </button>
@@ -141,7 +151,7 @@ export default function PreRegisterSection() {
               )}
             </>
           )}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

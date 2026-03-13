@@ -22,7 +22,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className="bg-sponge-bg text-sponge-text antialiased">
         <Navbar />
-        <main className="pt-16">{children}</main>
+        <main>{children}</main>
         <Footer />
       </body>
     </html>
