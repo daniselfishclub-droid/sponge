@@ -110,10 +110,10 @@ export default function Hero() {
       <BallpitBackground
         count={120}
         colors={["#ffd700", "#64ffda", "#1e3a5f"]}
-        gravity={1.2}
-        friction={0.99}
-        wallBounce={0.85}
-        maxVelocity={0.5}
+        gravity={0.5}
+        friction={0.995}
+        wallBounce={0.9}
+        maxVelocity={0.25}
         followCursor={true}
         minSize={0.3}
         maxSize={0.8}
