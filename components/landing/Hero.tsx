@@ -2,64 +2,13 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState, useCallback } from "react";
+import dynamic from "next/dynamic";
 
-interface Particle {
-  id: number;
-  x: number;
-  y: number;
-  size: number;
-  color: string;
-  duration: number;
-  delay: number;
-}
-
-function FloatingParticles() {
-  const [particles, setParticles] = useState<Particle[]>([]);
-
-  useEffect(() => {
-    const colors = ["rgba(255,215,0,0.6)", "rgba(100,255,218,0.4)", "rgba(255,215,0,0.3)", "rgba(100,255,218,0.6)"];
-    const generated: Particle[] = Array.from({ length: 30 }, (_, i) => ({
-      id: i,
-      x: Math.random() * 100,
-      y: Math.random() * 100,
-      size: Math.random() * 3 + 1,
-      color: colors[Math.floor(Math.random() * colors.length)],
-      duration: Math.random() * 8 + 6,
-      delay: Math.random() * 5,
-    }));
-    setParticles(generated);
-  }, []);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute rounded-full"
-          style={{
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            width: p.size,
-            height: p.size,
-            backgroundColor: p.color,
-            boxShadow: `0 0 ${p.size * 4}px ${p.color}`,
-          }}
-          animate={{
-            y: [0, -30, 10, -20, 0],
-            x: [0, 15, -10, 5, 0],
-            opacity: [0.2, 0.8, 0.4, 0.9, 0.2],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
+// SSR 비활성화 (Three.js는 브라우저에서만 동작)
+const BallpitBackground = dynamic(
+  () => import("./BallpitBackground").then((mod) => mod.BallpitBackground),
+  { ssr: false }
+);
 
 function LiveCounter() {
   const [count, setCount] = useState(127);
@@ -106,11 +55,23 @@ const taglineWords = ["냅다 흡수하고", "냅다 만들고", "냅다 세상�
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden mesh-gradient-hero noise-overlay">
-      <FloatingParticles />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* 3D Ballpit 배경 */}
+      <BallpitBackground
+        count={120}
+        colors={["#ffd700", "#64ffda", "#1e3a5f"]}
+        gravity={0.3}
+        friction={0.998}
+        followCursor={true}
+        minSize={0.3}
+        maxSize={0.8}
+        lightIntensity={250}
+        ambientColor="#0a0a1a"
+        ambientIntensity={0.6}
+      />
 
-      {/* Radial glow behind title */}
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-sponge-gold/5 rounded-full blur-[100px] pointer-events-none" />
+      {/* 어두운 오버레이 (텍스트 가독성) */}
+      <div className="absolute inset-0 bg-sponge-bg/40 pointer-events-none z-[1]" />
 
       <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
         <motion.p
@@ -189,8 +150,8 @@ export default function Hero() {
         <LiveCounter />
       </div>
 
-      {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-sponge-bg to-transparent pointer-events-none" />
+      {/* 하단 페이드 */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-sponge-bg to-transparent pointer-events-none z-[2]" />
     </section>
   );
 }
