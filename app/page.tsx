@@ -7,13 +7,13 @@ import PreRegisterSection from "@/components/pre-register/PreRegisterSection";
 
 export default function Home() {
   return (
-    <>
+    <div className="flex flex-col gap-24 md:gap-32">
       <Hero />
       <About />
       <Curriculum />
       <Target />
       <PreRegisterSection />
       <ComingSoon />
-    </>
+    </div>
   );
 }
